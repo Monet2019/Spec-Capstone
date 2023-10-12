@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Favorite Recipe</title>
+  <link rel="stylesheet" href="/static/fav.css">
+</head>
+<body>
+  <header>
+    <h1>My Recipes</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/recipes">Recipes</a>
+      <a href="/favs">Favorites</a>
+    </nav>
+  </header>
+
+  <h1>Recipe Added to Favorites</h1>
+  <p>{{ flash }}</p>
+
+  <table class="recipe-table">
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+        <th>Ingredients</th>
+        <th>Instructions</th>
+        <th>Cook Time</th>
+        <th>Prep Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ recipe.name }}</td>
+        <td>{{ recipe.ingredients }}</td>
+        <td>{{ recipe.instructions }}</td>
+        <td>{{ recipe.cook_time }}</td>
+        <td>{{ recipe.prep_time }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form action="/favs/{{ recipe.id }}/add-note" method="POST">
+    <textarea name="note"></textarea>
+    <input type="submit" value="Add Note">
+  </form>
+
+</body>
+</html>

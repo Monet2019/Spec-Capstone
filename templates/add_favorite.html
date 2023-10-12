@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ recipe.name }}</h1>
+<p>{{ recipe.instructions }}</p>
+    <form action="/add_favorite" method="post">
+        <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+        <button type="submit">Add to Favorites</button>
+    </form>
+{% endblock %}

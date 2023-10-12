@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.flash-msg {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Add your additional global styles here */
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    /* Add styles for smaller screens here */
+}
+.add-favorite-form {
+    margin-top: 20px;
+  }
+  
+  .add-favorite-form button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-favorite-form button:hover {
+    background-color: #333;
+  }
+  

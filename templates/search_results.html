@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <p>Search Query: {{ query }}</p>
+    <ul>
+        {% for recipe in recipes %}
+            <li>
+                <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/recipes">Back to All Recipes</a>
+</body>
+</html>

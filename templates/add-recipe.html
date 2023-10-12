@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/add.css"/>
+    <title>Add Recipes</title>
+</head>
+<body>
+    <h1>Add a New Recipe</h1>
+<br>
+    
+
+    <form method="post" action="/add-recipe">
+        <label for="name">Recipe Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" name="instructions" required></textarea><br><br>
+
+        <label for="cook_time">Cook Time (minutes):</label>
+        <input type="number" id="cook_time" name="cook_time" required><br><br>
+
+        <label for="prep_time">Prep Time (minutes):</label>
+        <input type="number" id="prep_time" name="prep_time" required><br><br>
+
+        <label for="servings">Servings:</label>
+        <input type="number" id="servings" name="servings" required><br><br>
+
+        <label for="ingredients">Ingredients:</label>
+        <textarea id="ingredients" name="ingredients" required></textarea><br><br>
+
+        <input type="submit" value="Add Recipe"><br><br>
+    </form>
+    <br>
+    <br>
+    <br>
+    <a href="/recipes">Back to All Recipes</a>
+</body>
+</html>
+
+

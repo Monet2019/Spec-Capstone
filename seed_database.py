@@ -18,13 +18,13 @@ with server.app.app_context():
 
     recipes_in_db = []
     for recipe in recipe_data:
-        name, instructions, cook_time, prep_time, servings, ingredients = (
+        name, instructions, cook_time, prep_time, servings, = (
             recipe["name"],
             recipe["instructions"],
             recipe["cook_time"],
             recipe["prep_time"],
             recipe["servings"],
-            recipe["ingredients"],
+            
         )
 
         db_recipe = crud.create_recipe(
@@ -33,7 +33,7 @@ with server.app.app_context():
             cook_time,
             prep_time,
             servings,
-            ingredients,
+            
         )
         recipes_in_db.append(db_recipe)
 

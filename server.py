@@ -79,16 +79,16 @@ def add_recipe():
         cook_time = request.form.get("cook_time")
         prep_time = request.form.get("prep_time")
         servings = request.form.get("servings")
-        ingredient = request.form.get("ingredients")
+       
 
         recipe = crud.create_recipe(
-            name, instructions, cook_time, prep_time, servings, ingredient
+            name, instructions, cook_time, prep_time, servings, 
         )
         db.session.add(recipe)
         db.session.commit()
         flash("Recipe added successfully!")
 
-        return redirect("/recipes")
+        return redirect("/add-recipe")
 
     return render_template("add-recipe.html", flash=flash)
 

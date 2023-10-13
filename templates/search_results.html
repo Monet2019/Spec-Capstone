@@ -4,6 +4,11 @@
     <title>Search Results</title>
 </head>
 <body>
+    {% extends "base.html" %}
+   
+    {% block title %}Home{% endblock %}
+    
+    {% block body %}
     <h1>Search Results</h1>
     <p>Search Query: {{ query }}</p>
     <ul>

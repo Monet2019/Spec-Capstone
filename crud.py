@@ -1,4 +1,6 @@
 from model import db, connect_to_db, User, Recipe, Fav 
+from sqlalchemy.orm import load_only
+
 
 if __name__ == '__main__':
     from server import app
@@ -20,12 +22,13 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
-def create_recipe(name, ingredient, instructions, cook_time, prep_time, servings):
+def create_recipe(name,instructions, cook_time, prep_time, servings):
   """Create and return a new recipe."""
+
+
 
   recipe = Recipe(
     name=name,
-    ingredient=ingredient,
     instructions=instructions,
     cook_time=cook_time,
     prep_time=prep_time,

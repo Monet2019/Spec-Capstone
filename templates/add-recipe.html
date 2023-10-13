@@ -8,6 +8,7 @@
     <title>Add Recipes</title>
 </head>
 <body>
+   
     <h1>Add a New Recipe</h1>
 <br>
     
@@ -28,11 +29,15 @@
         <label for="servings">Servings:</label>
         <input type="number" id="servings" name="servings" required><br><br>
 
-        <label for="ingredients">Ingredients:</label>
-        <textarea id="ingredients" name="ingredients" required></textarea><br><br>
-
+        
         <input type="submit" value="Add Recipe"><br><br>
     </form>
+
+    {% for msg in get_flashed_messages() %}
+      <p class="flash-msg">
+        {{ msg }}
+      </p>
+    {% endfor %}
     <br>
     <br>
     <br>

@@ -82,9 +82,7 @@ def my_function(obj):
     if not isinstance(obj, inspect(obj).mapper.mapped_class):
         raise TypeError("Object must be an SQLAlchemy object")
 
-if __name__ == "__main__":
-    from server import app
-    connect_to_db(app)
+
 
  # Create a new Fav object
     fav = Fav()
@@ -98,3 +96,7 @@ if __name__ == "__main__":
     # Save the Fav object
     db.session.add(fav)
     db.session.commit()
+
+if __name__ == "__main__":
+    from server import app
+    connect_to_db(app)

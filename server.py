@@ -1,7 +1,8 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
-from model import connect_to_db, db , Fav
+from model import connect_to_db, db, Fav
 from jinja2 import StrictUndefined
 import crud
+
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -90,62 +91,64 @@ def add_recipe():
 
         return redirect("/add-recipe")
 
+
     return render_template("add-recipe.html", flash=flash)
 
 
-@app.route("/fav", methods=["POST"])
+
+
+
+@app.route("/fav", methods=["GET"])
 def fav():
     """List the user's favorites."""
 
-    user_id = session.get("user_email")
-    if not user_id:
-        flash("You must be logged in to view your favorites.")
-        return redirect("/add_favorite")
-
-    favs = crud.fav(user_id)
-
-    return render_template("favs.html", favs=favs)
+    user_id = session.get("user_id")
     
     
-@app.route("/add_favorite", methods=["POST"])
+   
+    # Get the user's favorites
+    favs = Fav.query.filter_by(user_id=user_id).all()
+
+    return render_template("fav.html", favs=favs)
+
+
+   
+@app.route("/add_favorite", methods=["GET"])
 def add_favorite_handler():
     """Add a recipe to favorites."""
 
     recipe_id = request.form.get("recipe_id")
     user_id = session.get("user_id")
 
-    if not user_id:
-        flash("You must be logged in to add recipes to favorites.")
-        return redirect("/add_favorite")
-
-    fav(recipe_id, user_id)
-
+  
+  
+    
+    # Add the recipe to the user's favorites
+    favorite = Fav(user_id=user_id, recipe_id=recipe_id)
+    db.session.add(favorite)
+    db.session.commit()
     flash("Recipe added to favorites.")
-    return redirect("/recipe")
-
+    return redirect("/fav")
     
     
-    #recipe_id = int(request.form.get("recipe_id"))
-    #user_id = int(request.form.get("user_id"))
 
-    #fav = Fav(recipe_id=recipe_id, user_id=user_id)
-    #db.session.add(fav)
-    #db.session.commit()
+@app.route("/search", methods=["GET"])
+def search_recipe():
+    """Search for Recipes"""
 
-    #flash("Recipe added to favorites successfully!")
+    if request.method == "GET":
+        query = request.args.get("query")
+        
+    recipe= crud.search_recipes(query)
+    recipes=crud.get_recipes   
+        
 
-    #return redirect("/recipes")
+    return render_template("search.html", recipes=recipes)
 
 
 
-@app.route("/search")
-def search_recipes():
-    """Search for recipes."""
 
-    query = request.args.get("query")
-    recipes = crud.search_recipes(query)
 
-    return render_template("search_results.html", recipes=recipes)
 
 
 if __name__ == "__main__":

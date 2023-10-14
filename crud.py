@@ -1,5 +1,5 @@
 from model import db, connect_to_db, User, Recipe, Fav 
-from sqlalchemy.orm import load_only
+
 
 
 if __name__ == '__main__':
@@ -51,22 +51,27 @@ def get_recipe_by_id(recipe_id):
 
 def search_recipes(query):
   """Search for recipes by query."""
-
-  return Recipe.query.filter(Recipe.name.contains(query) | Recipe.ingredient.contains(query))
+  if query is None:
+     return []
+  
+  return Recipe.query.filter(Recipe.name.contains(query))
 
 def fav(recipe_id, user_id):
-    """Add a new favorite to the database."""
+  """Add a new favorite to the database."""
 
-    fav = Fav(recipe_id=recipe_id, user_id=user_id)
-    db.session.add(fav)
-    db.session.commit()
+  fav = Fav(recipe_id=recipe_id, user_id=user_id)
+  fav = Fav.query.filter_by(user_id=user_id).all()
+  db.session.add(fav)
+  db.session.commit()
+
+  return fav
 
 def add_favorite(recipe_id, user_id):
-    """Add a recipe to favorites."""
+  """Add a recipe to favorites."""
 
-    fav = Fav(recipe_id=recipe_id, user_id=user_id)
+  fav = Fav(recipe_id=recipe_id, user_id=user_id)
 
-    db.session.add(fav)
-    db.session.commit()
+  db.session.add(fav)
+  db.session.commit()
 
 

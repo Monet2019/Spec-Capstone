@@ -1,10 +1,32 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Favorite Recipe</title>
+  <link rel="stylesheet" href="/static/fav.css">
+</head>
+<body>
+  <header>
+    <h1>Nav</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/recipes">Recipes</a>
+      <a href="/favs">Favorites</a>
+    </nav>
+  </header>
+  {% for msg in get_flashed_messages() %}
+  <p class="flash-msg">
+    {{ msg }}
+  </p>
+{% endfor %}
+  <h1>Recipe Added to Favorites</h1>
 
-{% block content %}
-<h1>{{ recipe.name }}</h1>
-<p>{{ recipe.instructions }}</p>
-    <form action="/add_favorite" method="post">
-        <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
-        <button type="submit">Add to Favorites</button>
-    </form>
-{% endblock %}
+  <ul>
+    {% for fav in favs %}
+      <li>
+          <a href="/fav/{{ fav.fav_id }}">{{ fav.recipe.name }}</a>
+      </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

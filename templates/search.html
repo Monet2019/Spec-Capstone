@@ -1,0 +1,32 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/search.css"/>
+    <title>Search Results</title>
+</head>
+<body>
+    
+    <h1>Search Results</h1>
+
+    <form action="/search" method="GET">
+        <input type="text" id="query" name="query" placeholder="Search for recipes...">
+        <input type="submit" value="Search">
+    </form>
+
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+
+    {% if not recipes %}
+        <p>No recipes found.</p>
+    {% endif %}
+
+</body>
+</html>

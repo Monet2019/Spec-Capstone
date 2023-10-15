@@ -56,22 +56,15 @@ def search_recipes(query):
   
   return Recipe.query.filter(Recipe.name.contains(query))
 
-def fav(recipe_id, user_id):
+def add_favorite(recipe_id, user_id):
   """Add a new favorite to the database."""
 
   fav = Fav(recipe_id=recipe_id, user_id=user_id)
-  fav = Fav.query.filter_by(user_id=user_id).all()
   db.session.add(fav)
   db.session.commit()
 
   return fav
 
-def add_favorite(recipe_id, user_id):
-  """Add a recipe to favorites."""
 
-  fav = Fav(recipe_id=recipe_id, user_id=user_id)
-
-  db.session.add(fav)
-  db.session.commit()
 
 

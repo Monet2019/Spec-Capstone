@@ -1,35 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Add Favorite Recipe</title>
   <link rel="stylesheet" href="/static/fav.css">
 </head>
 <body>
   <header>
-    <h1>Nav</h1>
+    <h2>Navigation</h2>
     <nav>
-      <a href="/">Home</a>
-      <a href="/recipes">Recipes</a>
-      <a href="/favs">Favorites</a>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipes">Recipes</a></li>
+        <li><a href="/add-recipe">Add Recipes</a></li>
+        <li><a href="/search">Search</a></li>
     </nav>
   </header>
+
   {% for msg in get_flashed_messages() %}
   <p class="flash-msg">
     {{ msg }}
   </p>
-{% endfor %}
-  <h1>Recipe Added to Favorites</h1>
- 
-  <ul>
-    {% for recipe in recipes %}
-        <li>
-            <a href="/fav/{{ fav.fav_id }}">{{ recipe.name }}</a>
+  {% endfor %}
+
+  <main>
+    <h1>Recipe Added to Favorites</h1>
+
+    <ul class="recipes">
+      {% for recipe in recipes %}
+        <li class="recipe">
+          <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a>
         </li>
-    {% endfor %}
-</ul>
-  
-
-  
-
+      {% endfor %}
+    </ul>
+  </main>
 </body>
 </html>

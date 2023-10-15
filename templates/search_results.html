@@ -4,30 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/all_recipes.css"/>
-    <title>All Recipes</title>
+    <link rel="stylesheet" href="/static/search-results.css"/>
+    <title>Search Results</title>
 </head>
 <body>
-
-
-    <h2>Navigation</h2>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/add-recipe">Add Recipes</a></li>
-        <li><a href="/search">Search</a></li>
-        <li><a href="/fav">Favorite</a></li>
-    </ul>
-
-    <h1>Recipes</h1>
+   
+    <h1>Search Results</h1>
+    <p>Search Query: {{ query }}</p>
     <ul>
         {% for recipe in recipes %}
             <li>
                 <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a>
             </li>
         {% endfor %}
-       
     </ul>
+   
+    <a href="/recipes">Back to All Recipes</a>
 </body>
 </html>
-
-

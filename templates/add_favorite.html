@@ -8,9 +8,11 @@
   <header>
     <h1>Nav</h1>
     <nav>
-      <a href="/">Home</a>
-      <a href="/recipes">Recipes</a>
-      <a href="/favs">Favorites</a>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipes">Recipes</a></li>
+        <li><a href="/add-recipe">Add Recipes</a></li>
+        <li><a href="/search">Search</a></li>
+      
     </nav>
   </header>
   {% for msg in get_flashed_messages() %}

@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Add Favorite Recipe</title>
-  <link rel="stylesheet" href="/static/fav.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/static/fav.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Recipes</title>
 </head>
 <body>
-  <header>
-    <h2>Navigation</h2>
-    <nav>
-        <li><a href="/">Home</a></li>
-        <li><a href="/recipes">Recipes</a></li>
-        <li><a href="/add-recipe">Add Recipes</a></li>
-        <li><a href="/search">Search</a></li>
-    </nav>
-  </header>
+<h2>Navagation</h2>
+<li><a href="/">Home</a></li>
+<li><a href="/recipes">Recipes</a></li>
+<li><a href="/add-recipe">Add Recipes</a></li>
+<li><a href="/search">Search</a></li>
+<li><a href="/fav">Favorite</a></li>
+    <header>
+        <h1>Favorite Recipes</h1>
+    </header>
+   
 
-  {% for msg in get_flashed_messages() %}
-  <p class="flash-msg">
-    {{ msg }}
-  </p>
-  {% endfor %}
+    {% for msg in get_flashed_messages() %}
+      <p class="flash-msg">
+        {{ msg }}
+      </p>
+    {% endfor %}
 
-  <main>
-    <h1>Recipe Added to Favorites</h1>
+    {% if recipes %}
+        <ul>
+            {% for recipe in recipes %}
+                <li>
+                    <h2>{{ recipe.name }}</h2>
+                    <p>Instructions: {{ recipe.instructions }}</p>
+                    <p>Cook Time: {{ recipe.cook_time }} minutes</p>
+                    <p>Prep Time: {{ recipe.prep_time }} minutes</p>
+                    <p>Servings: {{ recipe.servings }}</p>
+                    <!-- Add more details as needed -->
 
-    <ul class="recipes">
-      {% for recipe in recipes %}
-        <li class="recipe">
-          <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </main>
+                    <!-- You can include a link to the detailed recipe page if required -->
+                    <a href="{{ url_for('show_recipe', recipe_id=recipe.id) }}">View Recipe</a>
+                </li>
+                
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No favorite recipes found.</p>
+        {% endif %}
+    
+       
 </body>
 </html>

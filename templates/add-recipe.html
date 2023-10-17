@@ -8,29 +8,30 @@
     <title>Add Recipes</title>
 </head>
 <body>
-   
+    <br>
+    <br><br> 
     <h1>Add a New Recipe</h1>
 <br>
-    
+<br><br> 
 
     <form method="post" action="/add-recipe">
         <label for="name">Recipe Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+        <input type="text" id="name" name="name" required><br><br><br>
 
         <label for="instructions">Instructions:</label>
-        <textarea id="instructions" name="instructions" required></textarea><br><br>
+        <textarea id="instructions" name="instructions" required></textarea><br><br><br>
 
         <label for="cook_time">Cook Time (minutes):</label>
-        <input type="number" id="cook_time" name="cook_time" required><br><br>
+        <input type="number" id="cook_time" name="cook_time" required><br><br><br>
 
         <label for="prep_time">Prep Time (minutes):</label>
-        <input type="number" id="prep_time" name="prep_time" required><br><br>
+        <input type="number" id="prep_time" name="prep_time" required><br><br><br>
 
         <label for="servings">Servings:</label>
-        <input type="number" id="servings" name="servings" required><br><br>
+        <input type="number" id="servings" name="servings" required><br><br><br>
 
         
-        <input type="submit" value="Add Recipe"><br><br>
+        <input type="submit" value="Add Recipe"><br><br><br>
     </form>
 
     {% for msg in get_flashed_messages() %}
@@ -41,7 +42,7 @@
     <br>
     <br>
     <br>
-    <a href="/recipes">Back to All Recipes</a>
+    <br><br><a href="/recipes">Back to All Recipes</a>
 </body>
 </html>
 

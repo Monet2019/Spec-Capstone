@@ -18,7 +18,7 @@
 
     <br>
 
-    <h1>Welcome to The Chef's Table!</h1>
+    <h1>Welcome to The Chef's Table: <br>A Culinary Journey Through Generations!</h1>
       <br>
       <br>
       <h3>Navigation</h3>
@@ -28,17 +28,18 @@
         <li><a href="/add-recipe">Add Recipes</a></li>
         <li><a href="/search">Search</a></li>
         <li><a href="/fav">Favorite</a></li>
-        <li><a href="/add_favorite">Add to Favorite</a></li>
+       
       </ul>
     <br>
     <br>
     <br>
 
+    
 
     <h2>Log In</h2>
     <form action="/login" method="POST">
       <p>
-        Email <input type="text" name="email">
+        Username <input type="text" name="email">
       </p>
   
       <p>
@@ -53,7 +54,7 @@
       <h2>Create an Account</h2>
       <form action="/users" method="POST">
         <p>
-          Email <input type="text" name="email">
+          Username <input type="text" name="email">
         </p>
     
         <p>
@@ -65,6 +66,8 @@
         </p>
       </form>
       <br>
+
+      <video src="{{ url_for('static', filename='about.mp4') }}" autoplay loop muted></video>
     {% endblock %}
     
 </body>

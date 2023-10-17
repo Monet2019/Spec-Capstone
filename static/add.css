@@ -9,10 +9,11 @@ body {
   
   h1 {
     font-family: "Montserrat", sans-serif;
-    font-size: 24px;
+    font-size: 55px;
     font-weight: bold;
     margin-top: 0;
     color: #000;
+    text-align: center;
   }
   
   label {
@@ -40,7 +41,7 @@ body {
   
   input[type="submit"] {
     background-color: #000;
-    color: #fff;
+    color: #f9f3f3;
     border: 0;
     padding: 10px 20px;
     margin-top: 10px;

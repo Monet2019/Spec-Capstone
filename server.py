@@ -57,7 +57,7 @@ def all_recipes():
     """View all recipes."""
 
     recipes = crud.get_recipes()
-
+    
     return render_template("all_recipes.html", recipes=recipes)
 
 
@@ -95,14 +95,21 @@ def add_recipe():
 
 
 
-@app.route("/fav", methods=["GET"])
-def fav():
-    """List the user's favorites."""
+@app.route("/fav", methods=["GET", "POST"])
+def fav(recipe_id=None):
+    """List the user's favorites or add a recipe to the user's favorites."""
 
-    user_id = session.get("user_id")
+    if recipe_id:
+        # Add the recipe to the user's favorites
+        fav = Fav(recipe_id=recipe_id)
+        db.session.add(fav)
+        db.session.commit()
+
+        # Flash a success message
+        flash("Recipe added to favorites", "success")
 
     # Get the user's favorites
-    favs = Fav.query.filter_by(user_id=user_id).all()
+    favs = Fav.query.filter_by(user_id=session.get("user_id")).all()
 
     # Declare the recipes list
     recipes = []
@@ -119,30 +126,6 @@ def fav():
     # Pass the user's favorite recipes to the template context
     return render_template("fav.html", recipes=recipes)
 
-
-
-   
-@app.route("/add_favorite/<int:recipe_id>", methods=["POST"])
-def add_to_favorites(recipe_id):
-  """Add a recipe to the user's favorites."""
-
-  recipe = Recipe.query.get(recipe_id)
-
-  # Check if the recipe exists
-  if not recipe:
-    return redirect("/recipe")
-
-  # Check if the user has already added the recipe to their favorites
-  fav = Fav.query.filter_by(recipe_id=recipe_id).first()
-
-  # If the user has not already added the recipe to their favorites, add it now
-  if not fav:
-    fav = Fav(recipe_id=recipe_id)
-    db.session.add(fav)
-    db.session.commit()
-
-  # Redirect the user to the recipe page
-  return redirect(url_for("fav", recipe_id=recipe_id))
     
 
 @app.route("/search", methods=["GET"])
@@ -160,8 +143,8 @@ def search_recipe():
 
 
 
-
-
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="localhost", port=8000, debug=True)
+
+   

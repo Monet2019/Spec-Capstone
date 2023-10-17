@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,30 +9,30 @@
 </head>
 <body>
     
-    <h2>Navigation</h2>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/recipes">Recipes</a></li>
-        <li><a href="/add-recipe">Add Recipes</a></li>
-        <li><a href="/fav">Favorite</a></li>
-    </ul>
+   <br>
+   <br>
+   <br>
+    <h1>Search</h1>
+    <br>
+    <br>
 
-    
-    <h1>Search Results</h1>
-
-    <form action="/search" method="GET">
+    <form action="/search" method="GET"><br>
         <input type="text" id="query" name="query" placeholder="Search for recipes...">
-        <input type="submit" value="Search">
+        <br><br>
+        <input type="submit" value="Search"><br><br>
     </form>
-
+    <br>
     <ul>
         {% for recipe in recipes %}
         <li>
             <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a>
         </li>
+
     {% endfor %}
     </ul>
-
+    <br>
+    <br>
+ <a href="/recipes">Back to All Recipes</a>
    
     
 

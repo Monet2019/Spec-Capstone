@@ -15,6 +15,16 @@
     <p>Cook Time: {{ recipe.cook_time }} minutes</p>
     <p>Prep Time: {{ recipe.prep_time }} minutes</p>
     <p>Servings: {{ recipe.servings }}</p>
+
+    <form method="post" action="/fav">
+        <input type="hidden" name="recipe_id" value="{{ recipe.recipe_id }}">
+        <button type="submit">Add to Favorites</button>
+    </form>
+        <br>
+        <br>
     <a href="/recipes">Back to All Recipes</a>
 </body>
 </html>
+
+
+

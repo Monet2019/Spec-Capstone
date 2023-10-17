@@ -8,8 +8,13 @@
     <title>All Recipes</title>
 </head>
 <body>
-
-
+    
+    {% for msg in get_flashed_messages() %}
+      <p class="flash-msg">
+        {{ msg }}
+      </p>
+    {% endfor %}
+    
     <h2>Navigation</h2>
     <ul>
         <li><a href="/">Home</a></li>
@@ -24,6 +29,7 @@
             <li>
                 <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.name }}</a>
             </li>
+            
         {% endfor %}
        
     </ul>
